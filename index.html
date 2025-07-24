@@ -1,38 +1,120 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
-<!--  If necessary, please modify the charset parameter to specify the        -->
-<!--  character set of your HTML page.                                        -->
-<!--  ----------------------------------------------------------------------  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web-to-Case Form</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      padding: 50px;
+    }
 
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <FORM> element to your page.             -->
-<!--  ----------------------------------------------------------------------  -->
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
 
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dd200000HLBpv" method="POST">
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-<input type=hidden name="orgid" value="00Dd200000HLBpv">
-<input type=hidden name="retURL" value="http://">
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-<!--  these lines if you wish to test in debug mode.                          -->
-<!--  <input type="hidden" name="debug" value=1>                              -->
-<!--  <input type="hidden" name="debugEmail"                                  -->
-<!--  value="praveensenthil488@gmail.com">                                    -->
-<!--  ----------------------------------------------------------------------  -->
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
 
-<label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
 
-<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+    .note {
+      font-size: 13px;
+      text-align: center;
+      margin-top: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
 
-<label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
+<div class="form-container">
+  <h2>Submit a Support Case</h2>
 
-<label for="description">Description</label><textarea name="description"></textarea><br>
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dd200000HLBpv" method="POST">
 
-<input type="submit" name="submit">
+    <!-- Required Hidden Fields -->
+    <input type="hidden" name="orgid" value="00Dd200000HLBpv">
 
-</form>
+    <!-- ✅ Correct retURL added here -->
+    <input type="hidden" name="retURL" value="https://prav-x.github.io/Attendance/thankyou.html">
+
+    <!-- Optional Debug Fields -->
+    <!--
+    <input type="hidden" name="debug" value="1">
+    <input type="hidden" name="debugEmail" value="praveensenthil488@gmail.com">
+    -->
+
+    <!-- Optional Origin -->
+    <input type="hidden" name="origin" value="Web">
+
+    <!-- Form Fields -->
+    <label for="name">Contact Name</label>
+    <input id="name" name="name" maxlength="80" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" maxlength="80" type="email" required>
+
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" maxlength="40" type="text">
+
+    <label for="subject">Subject</label>
+    <input id="subject" name="subject" maxlength="80" type="text" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <input type="submit" value="Submit Case">
+
+    <p class="note">Once submitted, our team will get back to you shortly.</p>
+  </form>
+</div>
+
+</body>
+</html>
